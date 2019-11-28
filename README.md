@@ -12,7 +12,7 @@ Original data.json was modified to add email 'table'
 
 In your terminal go to `cs-assigment\server`
 
-Run `json-server --watch data.json` to start JSON Server
+Run `json-server --watch data.json -i Id` to start JSON Server
 
 ## Angular-datatables
 
