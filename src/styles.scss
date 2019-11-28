@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+// Colors
+$bf-inactive: #a8a8a7;
+$tf-inactive: #7c7c7b;
+$bf-active: #000000;
+$bf-disabled: #dadada;
+$tf-disabled: #a8a8a7;
+$error-red: #d91e19;
+
+header,
+footer {
+  height: 30px;
+  width: 100%;
+  background-color: black;
+}
+
+button.btn.btn-primary,
+button.btn.btn-primary:active {
+  background-color: black;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 8px 15px;
+  font-weight: bold;
+}
+button.btn.btn-primary:hover {
+  background-color: #575756;
+}
+
+button.btn.btn-secondary {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 8px 15px;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+label {
+  margin-bottom: 15px;
+}
+input,
+input.form-control,
+select,
+textarea.form-control,
+ejs-multiselect .e-multiselect {
+  padding: 15px 10px;
+  font-size: 16px;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+}
+
+input,
+input.form-control,
+textarea.form-control {
+  border: solid 1px $bf-inactive;
+  color: $tf-inactive;
+  &:focus {
+    border-color: $bf-active;
+    color: $bf-active;
+    outline-color: transparent;
+  }
+  &:disabled {
+    border-color: $bf-disabled;
+    color: $bf-disabled;
+  }
+}
+
+textarea {
+  min-height: 70px;
+}

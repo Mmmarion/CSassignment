@@ -1,0 +1,94 @@
+$bf-inactive: #a8a8a7;
+$tf-inactive: #7c7c7b;
+$bf-active: #000000;
+$bf-disabled: #dadada;
+$tf-disabled: #a8a8a7;
+$error-red: #d91e19;
+
+.container {
+  margin-top: 30px;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid $error-red;
+}
+
+span.help-block {
+  color: $error-red;
+}
+
+h1 {
+  padding-bottom: 80px;
+}
+.requestForm {
+  & > div:not(:first-child) {
+    padding-top: 45px;
+  }
+  .radio {
+    span {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    label {
+      padding-top: 15px;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"] + .checkmark {
+      vertical-align: middle;
+      content: url(../../assets/radio.png);
+      margin-bottom: 0;
+      padding-right: 15px;
+    }
+    input[type="radio"]:checked + .checkmark {
+      content: url(../../assets/radio-checked.png);
+      margin-bottom: 0;
+      vertical-align: middle;
+      padding-right: 15px;
+    }
+    input[type="radio"]:disabled + .checkmark {
+      content: url(../../assets/radio-disabled.png);
+      margin-bottom: 0;
+      vertical-align: middle;
+      padding-right: 15px;
+      cursor: not-allowed;
+    }
+  }
+  .checkbox {
+    label {
+      font-weight: bold;
+    }
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"] + label .checkmark {
+      vertical-align: middle;
+      content: url(../../assets/checkbox.png);
+      margin-bottom: 0;
+      padding-right: 15px;
+    }
+    input[type="checkbox"]:checked + label .checkmark {
+      content: url(../../assets/checkbox-checked.png);
+      margin-bottom: 0;
+      vertical-align: middle;
+      padding-right: 15px;
+    }
+    input[type="checkbox"]:disabled + label .checkmark {
+      content: url(../../assets/checkbox-disabled.png);
+      margin-bottom: 0;
+      vertical-align: middle;
+      padding-right: 15px;
+      cursor: not-allowed;
+    }
+  }
+  .e-multi-select-wrapper input[type="text"] {
+    font-size: 16px;
+  }
+  // #localData > .e-multiselect.e-input-group.e-control-wrapper.e-input-focus {
+  // }
+}

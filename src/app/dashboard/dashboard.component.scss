@@ -1,0 +1,83 @@
+// .table-row-content div {
+//   &.description {
+//     height: 100px;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+//   &.characters {
+//     height: 100px;
+//     white-space: wrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//   }
+// }
+
+h1 {
+  padding-bottom: 30px;
+}
+
+button.btn-primary {
+  margin-bottom: 60px;
+}
+
+h2 {
+  padding: 30px 0px;
+}
+
+input,
+select {
+  padding: 8px 10px;
+  font-size: 16px;
+  color: red;
+}
+
+table {
+  padding-top: 30px;
+}
+
+/*
+   server-side-angular-way.component.css
+*/
+.no-data-available {
+  text-align: center;
+}
+
+/*
+   src/styles.css (i.e. your global style)
+*/
+.dataTables_empty {
+  display: none;
+}
+
+#dashboard {
+  .truncate {
+    .tooltiptext {
+      visibility: hidden;
+      width: 400px;
+      background-color: #7c7c7b;
+      color: #fff;
+      text-align: center;
+      padding: 16px 16px;
+      position: absolute;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 5px;
+        transform: rotate(180deg);
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #7c7c7b transparent transparent transparent;
+      }
+    }
+    &:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}

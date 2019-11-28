@@ -1,0 +1,200 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h1>Request Form</h1>
+      <form class="requestForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="requestName">Request name</label>
+          <input
+            type="text"
+            id="requestName"
+            class="form-control"
+            name="requestName"
+            max="255"
+            required
+            ngModel
+            #requestName="ngModel"
+            [disabled]="!canEdit"
+          />
+          <span
+            *ngIf="!requestName.valid && requestName.touched"
+            class="help-block"
+            >Please enter a valid request name</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="requestor">Requestor</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="selectedRequestor"
+            name="requestor"
+            required
+            #requestor="ngModel"
+            [disabled]="!canEdit"
+            value="{{ selectedRequestor ? selectedRequestor.DisplayName : '' }}"
+            list="allUsers"
+          />
+          <datalist id="allUsers">
+            <select class="form-control">
+              <option *ngFor="let user of allUsers" value="{{ user.Id }}">
+                {{ user.DisplayName }}
+              </option>
+            </select>
+          </datalist>
+          <span *ngIf="!requestor.valid && requestor.touched" class="help-block"
+            >Please enter a valid requestor</span
+          >
+        </div>
+
+        <div class="radio">
+          <span>Good ending?</span>
+          <div *ngFor="let goodEnding of goodEndings">
+            <label>
+              <input
+                type="radio"
+                name="goodEnding"
+                ngModel
+                [value]="goodEnding"
+                required
+                [disabled]="!canEdit"
+              />
+              <span class="checkmark"></span>
+              <span>{{ goodEnding }}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            minlength="250"
+            class="form-control"
+            ngModel
+            required
+            #description="ngModel"
+            [disabled]="!canEdit"
+          ></textarea>
+          <p>No spoilers please</p>
+          <span
+            *ngIf="!description.valid && description.touched"
+            class="help-block"
+            >Please enter a valid description</span
+          >
+        </div>
+
+        <div class="form-check checkbox">
+          <input
+            id="needStoryTeller"
+            type="checkbox"
+            name="needStoryTeller"
+            [(ngModel)]="needStoryTeller"
+            [disabled]="!canEdit"
+          />
+          <label class="form-check-label" for="needStoryTeller">
+            <span class="checkmark"></span>Need storyteller
+          </label>
+        </div>
+
+        <div class="form-group" *ngIf="needStoryTeller">
+          <label for="storyteller">Story teller</label>
+          <input
+            type="text"
+            id="storyteller"
+            class="form-control"
+            [(ngModel)]="this.requestData.Storyteller"
+            name="storyteller"
+            required
+            #storyteller="ngModel"
+            [disabled]="!canEdit"
+            list="allUsers"
+          />
+          <datalist id="allUsers">
+            <select class="form-control">
+              <option *ngFor="let user of allUsers" value="{{ user.Id }}">
+                {{ user.DisplayName }}
+              </option>
+            </select>
+          </datalist>
+          <span
+            *ngIf="!storyteller.valid && storyteller.touched"
+            class="help-block"
+            >Please enter a valid story teller</span
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="wantedChars">Wanted characters</label>
+          <ejs-multiselect
+            id="localData"
+            name="wanted"
+            #local="ngModel"
+            ngModel
+            [dataSource]="wantedCharactersAll"
+            [fields]="localFields"
+            [placeholder]="localWaterMark"
+            [disabled]="!canEdit"
+          ></ejs-multiselect>
+        </div>
+
+        <div class="form-group">
+          <label for="deadline">Deadline</label>
+          <input
+            type="date"
+            id="deadline"
+            class="form-control"
+            name="deadline"
+            required
+            [(ngModel)]="defaultDate"
+            max="{{ currentYear }}"
+            min="{{ weekAhead }}"
+            [disabled]="!canEdit"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Budget</label>
+          <input
+            type="number"
+            id="budget"
+            class="form-control"
+            ngModel
+            name="budget"
+            min="250000"
+            required
+            #budget="ngModel"
+            [disabled]="!canEdit"
+          />
+          <p>In Fable Dollars (FBD), no less than 250000</p>
+          <span *ngIf="!budget.valid && budget.touched" class="help-block"
+            >Please enter a valid budget</span
+          >
+        </div>
+
+        <input type="hidden" id="status" ngModel name="status" disabled />
+
+        <div>
+          <button class="btn btn-secondary" (click)="onCancle()" type="button">
+            Cancel
+          </button>
+          <button
+            class="btn btn-secondary"
+            (click)="onSave()"
+            type="button"
+            [disabled]="!canEdit"
+          >
+            Save as draft
+          </button>
+          <button
+            [disabled]="!f.valid || !canEdit"
+            class="btn btn-primary"
+            type="submit"
+          >
+            {{ submitButtonText }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

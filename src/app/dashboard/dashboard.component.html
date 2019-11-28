@@ -1,0 +1,106 @@
+<h1>Dashboard</h1>
+
+<button class="btn btn-primary" routerLink="/form">
+  Create a new request
+</button>
+
+<h2>Requests</h2>
+
+<table
+  id="dashboard"
+  datatable
+  [dtOptions]="dtOptions"
+  class="row-border hover"
+>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Request Name</th>
+      <th>Requestor</th>
+      <th>GoodEnding</th>
+      <th>Description</th>
+      <th>Need Story Teller</th>
+      <th>Story Teller</th>
+      <th>Wanted Char</th>
+      <th>Deadline</th>
+      <th>Budget</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="requestsData?.length != 0">
+    <tr
+      *ngFor="let request of requestsData"
+      routerLink="/form/{{ request.Id }}"
+    >
+      <td>{{ request.Id }}</td>
+      <td class="truncate">
+        {{ checkLengthTruncate(request.RequestName, 50) }}
+        <span
+          *ngIf="
+            checkLengthTruncate(request.RequestName, 50) !== request.RequestName
+          "
+          class="tooltiptext"
+        >
+          {{ checkLengthTruncate(request.RequestName, 500) }}
+        </span>
+      </td>
+      <td class="truncate">
+        {{ checkLengthTruncate(request.Requestor, 50) }}
+        <span
+          *ngIf="
+            checkLengthTruncate(request.Requestor, 50) !== request.Requestor
+          "
+          class="tooltiptext"
+        >
+          {{ checkLengthTruncate(request.Requestor, 500) }}
+        </span>
+      </td>
+      <td>{{ request.GoodEnding }}</td>
+      <td class="truncate">
+        {{ checkLengthTruncate(request.Description, 50) }}
+        <span
+          *ngIf="
+            checkLengthTruncate(request.Description, 50) !== request.Description
+          "
+          class="tooltiptext"
+        >
+          {{ checkLengthTruncate(request.Description, 500) }}
+        </span>
+      </td>
+      <td>{{ request.NeedStoryteller }}</td>
+      <td class="truncate">
+        {{ checkLengthTruncate(request.Storyteller, 50) }}
+        <span
+          *ngIf="
+            checkLengthTruncate(request.Storyteller, 50) !== request.Storyteller
+          "
+          class="tooltiptext"
+        >
+          {{ checkLengthTruncate(request.Storyteller, 500) }}
+        </span>
+      </td>
+      <td class="truncate">
+        {{ checkLengthTruncate(request.WantedCharacters, 50) }}
+        <span
+          *ngIf="
+            checkLengthTruncate(request.WantedCharacters, 50) !==
+            request.WantedCharacters
+          "
+          class="tooltiptext"
+        >
+          {{ checkLengthTruncate(request.WantedCharacters, 500) }}
+        </span>
+      </td>
+      <td>{{ formatDate(request.Deadline) }}</td>
+      <td>{{ request.Budget }}</td>
+      <td>{{ request.Status }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="requestsData?.length == 0">
+    <tr>
+      <td colspan="11" class="no-data-available">No data!</td>
+    </tr>
+  </tbody>
+
+  <tbody></tbody>
+</table>
