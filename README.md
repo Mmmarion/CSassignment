@@ -10,6 +10,8 @@ Run `npm install -g json-server` to install JSON Server
 
 Original data.json was modified to add email 'table'
 
+In your terminal go to `cs-assigment\server`
+
 Run `json-server --watch data.json` to start JSON Server
 
 ## Angular-datatables
@@ -24,9 +26,9 @@ Run
 
 `npm install angular-datatables --save`
 
-`npm install @types/jquery --save-dev`
+`npm install @types/jquery --save`
 
-`npm install @types/datatables.net --save-dev`
+`npm install @types/datatables.net --save`
 
 to install needed dependencies
 
